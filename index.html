@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do Life Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-theme="light">
+
+    <!-- Theme Toggle -->
+    <header class="dashboard-header">
+      <h1 class="dashboard-title">My Dashboard</h1>
+      <button id="theme-toggle" class="btn btn-icon" aria-label="Toggle theme">
+        🌙 Dark Mode
+      </button>
+    </header>
+
+    <main class="dashboard-grid">
+
+      <!-- Greeting Widget -->
+      <section id="greeting-widget" class="widget" aria-label="Greeting and clock">
+        <div id="clock-time" class="clock-time" aria-live="polite">00:00:00</div>
+        <div id="clock-date" class="clock-date">Monday, 01 January 2025</div>
+        <div id="greeting-message" class="greeting-message" aria-live="polite">Good Morning, there!</div>
+        <div class="name-input-group">
+          <label for="name-input" class="sr-only">Your name</label>
+          <input
+            type="text"
+            id="name-input"
+            class="input"
+            placeholder="Enter your name"
+            maxlength="50"
+            aria-label="Enter your name"
+          />
+          <button id="name-save-btn" class="btn btn-primary">Save</button>
+        </div>
+      </section>
+
+      <!-- Focus Timer Widget -->
+      <section id="timer-widget" class="widget" aria-label="Focus timer">
+        <h2 class="widget-title">Focus Timer</h2>
+        <div id="timer-display" class="timer-display" aria-live="polite" aria-atomic="true">25:00</div>
+        <div id="timer-complete-indicator" class="timer-complete-indicator hidden" role="status" aria-live="assertive">
+          ✅ Session complete!
+        </div>
+        <div class="timer-controls">
+          <button id="timer-start-btn" class="btn btn-primary">Start</button>
+          <button id="timer-stop-btn" class="btn btn-secondary">Stop</button>
+          <button id="timer-reset-btn" class="btn btn-secondary">Reset</button>
+        </div>
+        <div class="timer-duration-group">
+          <label for="timer-duration-input" class="label">Duration (min):</label>
+          <input
+            type="number"
+            id="timer-duration-input"
+            class="input input-small"
+            min="1"
+            max="60"
+            value="25"
+            aria-label="Pomodoro duration in minutes"
+          />
+          <button id="timer-duration-save-btn" class="btn btn-secondary">Save</button>
+        </div>
+        <div id="timer-duration-error" class="validation-message hidden" role="alert"></div>
+      </section>
+
+      <!-- Task List Widget -->
+      <section id="tasks-widget" class="widget" aria-label="Task list">
+        <h2 class="widget-title">Tasks</h2>
+        <div class="task-input-group">
+          <label for="task-input" class="sr-only">New task</label>
+          <input
+            type="text"
+            id="task-input"
+            class="input"
+            placeholder="Add a new task…"
+            maxlength="200"
+            aria-label="New task title"
+          />
+          <button id="task-add-btn" class="btn btn-primary">Add</button>
+        </div>
+        <div id="task-validation-message" class="validation-message hidden" role="alert"></div>
+        <ul id="task-list" class="task-list" aria-label="Task items" aria-live="polite"></ul>
+      </section>
+
+      <!-- Quick Links Widget -->
+      <section id="links-widget" class="widget" aria-label="Quick links">
+        <h2 class="widget-title">Quick Links</h2>
+        <div class="link-input-group">
+          <label for="link-label-input" class="sr-only">Link label</label>
+          <input
+            type="text"
+            id="link-label-input"
+            class="input"
+            placeholder="Label"
+            maxlength="100"
+            aria-label="Link label"
+          />
+          <label for="link-url-input" class="sr-only">Link URL</label>
+          <input
+            type="url"
+            id="link-url-input"
+            class="input"
+            placeholder="https://example.com"
+            maxlength="2048"
+            aria-label="Link URL"
+          />
+          <button id="link-add-btn" class="btn btn-primary">Add</button>
+        </div>
+        <div id="link-validation-message" class="validation-message hidden" role="alert"></div>
+        <div id="links-list" class="links-list" aria-label="Quick link buttons" aria-live="polite"></div>
+      </section>
+
+    </main>
+
+    <!-- Storage warning toast -->
+    <div id="storage-warning" class="toast hidden" role="alert" aria-live="assertive">
+      ⚠️ Could not save data — storage quota exceeded. Changes are active for this session only.
+      <button id="storage-warning-close" class="btn btn-icon toast-close" aria-label="Dismiss warning">✕</button>
+    </div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
